@@ -9,7 +9,7 @@ import { chooseName, chooseEmail, chooseAddress, choosePhone } from '../redux/sl
 
 interface ContactFormProps {
   id?: string,
-  data?: {}
+  
 }
 
 
@@ -20,13 +20,13 @@ const ContactForm = (props: ContactFormProps) => {
   const store = useStore();
 
   const onSubmit = (data: any, event: any) => {
-    console.log('ID: ${props.id}');
-    if (props.id) {
-      server_calls.update(props.id, data);
-      console.log(`Updated: ${data} ${props.id}`);
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
+    console.log(`ID: ${typeof props.id}`);
+    console.log(props.id)
+    console.log(data)
+    if (props.id && props.id.length > 0) {
+      server_calls.update(props.id[0], data);
+      console.log(`Updated: ${data.name} ${props.id}`);
+      setTimeout(() => {window.location.reload();}, 500);
       event.target.reset();
     } else {
       // Use dispatch to update our state in our store
@@ -48,7 +48,8 @@ const ContactForm = (props: ContactFormProps) => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <label htmlFor="name">Contact Name</label>
-          <Input {...register('name')}name='name' placeholder='Name'/>
+          <Input {...register('name')} name='name' placeholder='Name' />
+
         </div> 
         <div>
           <label htmlFor="email">Email</label> 
