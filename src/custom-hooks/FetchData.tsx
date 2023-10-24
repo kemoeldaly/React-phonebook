@@ -16,3 +16,5 @@ export const useGetData = () => {
 
     return { contactData, getData:handleDataFetch}
 }
+
+// updated
