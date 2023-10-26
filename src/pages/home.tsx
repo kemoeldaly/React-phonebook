@@ -1,4 +1,4 @@
-import React from 'react';
+
 import Background from '../assets/images/mountains.jpg';
 
 function Home() {
