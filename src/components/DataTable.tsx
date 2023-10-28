@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Button from "./Button"
 import Modal from "./Modal"
 import { server_calls } from '../api/server';
-import { DataGrid, GridColDef } from '@mui/x-data-grid';
+ import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { useGetData } from '../custom-hooks/FetchData';
-
 
 const columns: GridColDef[] = [
     { field: 'id', headerName: "ID", width: 90, hide: true},
@@ -18,7 +17,7 @@ const columns: GridColDef[] = [
 function DataTable() {
     let [ open, setOpen ] = useState(false);
     const { contactData, getData } = useGetData();
-    const [ selectionModel, setSelectionModel ] = useState<string[]>([])
+    const [ selectionModel, setSelectionModel ] = useState<any[]>([])
     // TODO: write useGetData hook and selection model
 
     const handleOpen = () => {

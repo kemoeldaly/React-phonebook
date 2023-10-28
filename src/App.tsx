@@ -1,18 +1,19 @@
- import { BrowserRouter, Routes, Route } from 'react-router-dom'
+ import {  Routes, Route, HashRouter } from 'react-router-dom'
  import Navbar from './components/navbar';
  import routes from './config/routes'
  import { Provider } from 'react-redux';
  import { store } from './redux/slices/store';
  
  import AuthChecker from './auth/AuthChecker';
+import { Key } from 'react';
  
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
     <Navbar />
       <Provider store={store}>
         <Routes>
-          {routes.map((route: any, index: any) => (
+          {routes.map((route: any, index: Key) => (
             <Route
               key={index}
               path={route.path}
@@ -29,7 +30,7 @@ function App() {
           ))}
         </Routes>
       </Provider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 export default App
